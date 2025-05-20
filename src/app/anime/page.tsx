@@ -2,11 +2,20 @@
 
 import { useState, useEffect } from "react";
 import { Command, CommandInput } from "@/components/ui/command";
+import Image from "next/image";
+
+interface Anime {
+  title: string;
+  genre: string[];
+  score: number;
+  episodes: number;
+  year: string;
+  synopsis: string;
+}
 
 export default function AnimePage() {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState<Anime[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -26,7 +35,6 @@ export default function AnimePage() {
         return;
       }
 
-      setLoading(true);
       setError(null);
       setResults([]);
 
@@ -41,14 +49,10 @@ export default function AnimePage() {
           );
           return;
         }
-
         setResults([data.data]);
-        console.log(data);
       } catch (err) {
         console.error("Fetch failed:", err);
         setError("Failed to fetch anime data. Please check your connection.");
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -77,7 +81,7 @@ export default function AnimePage() {
             <div className="bg-neutral-800 p-6 rounded-lg flex flex-col sm:flex-row gap-6">
               {/* Image */}
               <div className="flex-shrink-0 w-full sm:w-1/3">
-                <img
+                <Image
                   src={results[0].images?.jpg?.image_url}
                   alt={results[0].title}
                   width={640}
