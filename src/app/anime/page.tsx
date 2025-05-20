@@ -10,7 +10,14 @@ interface Anime {
   score: number;
   episodes: number;
   year: string;
-  images: string;
+  images: {
+    jpg: {
+      image_url: string;
+    };
+    webp?: {
+      image_url: string;
+    };
+  };
   synopsis: string;
 }
 
