@@ -4,9 +4,16 @@ import { useState, useEffect } from "react";
 import { Command, CommandInput } from "@/components/ui/command";
 import Image from "next/image";
 
+interface Genre {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+}
+
 interface Anime {
   title: string;
-  genres: string[];
+  genres: Genre[];
   score: number;
   episodes: number;
   year: string;

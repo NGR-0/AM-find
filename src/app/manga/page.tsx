@@ -4,14 +4,27 @@ import { useState, useEffect } from "react";
 import { Command, CommandInput } from "@/components/ui/command";
 import Image from "next/image";
 
+interface Genre {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+}
+
+interface Author {
+  mal_id: number;
+  type: string;
+  name: string;
+  url: string;
+}
 interface Manga {
   title: string;
   chapters: number;
   volumes: number;
-  genres: string[];
+  genres: Genre[];
   score: number;
   year: string;
-  authors: string[];
+  authors: Author[];
   images: {
     jpg: {
       image_url: string;
