@@ -6,10 +6,11 @@ import Image from "next/image";
 
 interface Anime {
   title: string;
-  genre: string[];
+  genres: string[];
   score: number;
   episodes: number;
   year: string;
+  images: string;
   synopsis: string;
 }
 

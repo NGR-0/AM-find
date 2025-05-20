@@ -12,6 +12,7 @@ interface Manga {
   score: number;
   year: string;
   authors: string[];
+  images: string;
   synopsis: string;
 }
 
